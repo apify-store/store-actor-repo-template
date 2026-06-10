@@ -1,0 +1,14 @@
+name: Platform tests - Core
+
+on:
+    schedule:
+        # Runs at the start of every hour
+        - cron: '0 * * * *'
+    workflow_dispatch:
+
+jobs:
+    platformTestsCore:
+        uses: apify-store/github-actions-source/.github/workflows/platform-tests.yaml@master
+        with:
+            subtest: core
+        secrets: inherit

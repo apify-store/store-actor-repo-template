@@ -1,0 +1,8 @@
+name: PR Test
+on:
+    pull_request:
+
+jobs:
+    buildDevelAndTest:
+        uses: apify-store/github-actions-source/.github/workflows/pr-build-test.yaml@master
+        secrets: inherit

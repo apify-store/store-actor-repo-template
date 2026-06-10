@@ -1,0 +1,27 @@
+# This flow takes about 8 seconds at the time of writing.
+echo "pre-commit: typechecking, linting, testing & validating schemas"
+
+# Local branch protection
+if [ "$(git branch --show-current)" = "master" ] || [ "$(git branch --show-current)" = "main" ]; then
+    # I don't know how to do this nicer
+    echo "\033[1;91mpre-commit: stopping commit. Local branch protection forbids push to 'main' or 'master'\033[0m" >&2
+    exit 1
+fi
+
+npm test
+# We typecheck & lint last when we know our code works
+npx tsc --noEmit
+npx lint-staged
+npm run check-unused
+npm run format:check
+
+echo "pre-commit: checking for unused exports"
+npm run check-unused
+
+cd ./actors
+# Validates schemas in parallel with 8 processes
+# each opens separate shell with a command in quotes
+# We must change apify vis fail code from 1 to 255 for xargs to fail on error
+ls | xargs -P 8 -I {} sh -c 'cd {} && apify vis || exit 255'
+
+echo "pre-commit: passed"
