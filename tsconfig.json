@@ -3,12 +3,13 @@
     "compilerOptions": {
         "module": "NodeNext",
         "moduleResolution": "NodeNext",
-        "target": "ES2022",
+        "target": "esnext",
         "outDir": "dist",
+        "rootDir": ".",
         "incremental": false,
         "noUnusedLocals": false,
         "skipLibCheck": true,
-        "lib": ["DOM"]
+        "lib": ["ESNext"]
     },
     "include": ["./src/**/*", "./test/**/*"]
 }
