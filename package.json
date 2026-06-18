@@ -1,29 +1,10 @@
 {
     "name": "example-store-actor",
     "version": "0.0.1",
-    "type": "module",
     "description": "This is a boilerplate of an Apify Actor.",
-    "engines": {
-        "node": ">=24.0.0"
-    },
-    "dependencies": {
-        "apify": "^3.7.2"
-    },
-    "devDependencies": {
-        "@apify/oxlint-config": "^0.2.10",
-        "@apify/tsconfig": "^0.1.2",
-        "@vitest/coverage-v8": "^4.1.8",
-        "apify-test-tools": "^0.8.0",
-        "husky": "^9.1.7",
-        "knip": "^6.17.1",
-        "lint-staged": "^17.0.7",
-        "oxlint": "^1.70.0",
-        "oxlint-tsgolint": "^0.23.0",
-        "prettier": "^3.8.4",
-        "tsx": "^4.22.4",
-        "typescript": "^6.0.3",
-        "vitest": "^4.1.8"
-    },
+    "license": "ISC",
+    "author": "It's not you it's me",
+    "type": "module",
     "scripts": {
         "start": "npm run start:dev",
         "start:prod": "node dist/main.js",
@@ -37,9 +18,28 @@
         "prepare": "husky .husky || true",
         "check-unused": "knip --include exports,types"
     },
+    "dependencies": {
+        "apify": "^3.7.2"
+    },
+    "devDependencies": {
+        "@apify/oxlint-config": "^0.2.10",
+        "@apify/tsconfig": "^0.2.0",
+        "@vitest/coverage-v8": "^4.1.8",
+        "apify-test-tools": "^0.8.0",
+        "husky": "^9.1.7",
+        "knip": "^6.17.1",
+        "lint-staged": "^17.0.7",
+        "oxlint": "^1.70.0",
+        "oxlint-tsgolint": "^0.23.0",
+        "prettier": "^3.8.4",
+        "tsx": "^4.22.4",
+        "typescript": "^6.0.3",
+        "vitest": "^4.1.8"
+    },
     "lint-staged": {
         "*.{ts,tsx}": "oxlint"
     },
-    "author": "It's not you it's me",
-    "license": "ISC"
+    "engines": {
+        "node": ">=24.0.0"
+    }
 }
