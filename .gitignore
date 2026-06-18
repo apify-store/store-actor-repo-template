@@ -13,3 +13,4 @@ storage
 .venv
 
 coverage
+package-lock.json

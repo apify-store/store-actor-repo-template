@@ -8,15 +8,15 @@ if [ "$(git branch --show-current)" = "master" ] || [ "$(git branch --show-curre
     exit 1
 fi
 
-npm test
+pnpm test
 # We typecheck & lint last when we know our code works
-npx tsc --noEmit
-npx lint-staged
-npm run check-unused
-npm run format:check
+pnpm exec tsc --noEmit
+pnpm exec lint-staged
+pnpm run check-unused
+pnpm run format:check
 
 echo "pre-commit: checking for unused exports"
-npm run check-unused
+pnpm run check-unused
 
 cd ./actors
 # Validates schemas in parallel with 8 processes

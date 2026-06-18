@@ -1,44 +1,31 @@
-# Specify the base Docker image. You can read more about
-# the available images at https://crawlee.dev/docs/guides/docker-images
-# You can also use any other image from Docker Hub.
-FROM apify/actor-node:24 AS builder
+# --- Builder stage: install all deps and compile TypeScript ---
+FROM apify/actor-node:26 AS builder
 
-# Copy just package.json and package-lock.json
-# to speed up the build using Docker layer cache.
-COPY package*.json ./
+# pnpm is not bundled in the base image yet; install the latest version
+RUN npm install -g pnpm
 
-# Install all dependencies. Don't audit to speed up the installation.
-RUN npm ci --include=dev --audit=false
+# Copy manifest files first to maximize layer cache hits on installs
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.json ./
 
-# Copy only files needed for building to maximize cache hits
-COPY tsconfig.json .
+RUN pnpm install --frozen-lockfile
+
 COPY src ./src
 
-# Install all dependencies and build the project.
-# Don't audit to speed up the installation.
-RUN npm run build
+RUN pnpm run build
 
-# Create final image
-FROM apify/actor-node:24
+# --- Final stage: lean runtime image with only production deps ---
+FROM apify/actor-node:26
 
-# Copy just package.json and package-lock.json
-# to speed up the build using Docker layer cache.
-COPY package*.json ./
+RUN npm install -g pnpm
 
-# Install NPM packages, skip optional and development dependencies to
-# keep the image small. Avoid logging too much and print the dependency
-RUN npm --quiet set progress=false \
-    && npm ci --omit=dev \
-    && echo "Node.js version:" \
-    && node --version \
-    && echo "NPM version:" \
-    && npm --version \
-    && rm -r ~/.npm
+# Copy manifest files first to maximise layer cache hits on installs
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
-# Copy built JS files from builder image
+RUN pnpm install --prod --frozen-lockfile
+
+# Copy compiled output from the builder stage
 COPY --from=builder /usr/src/app/dist ./dist
 
-# Here copy all other files necessary for runtime one by one. Try to keep them minimal to increase cache hits.
+RUN node -v
 
-# Run the image.
 CMD ["node", "dist/main.js"]
