@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm ci --include=dev --audit=false
 
 # Copy only files needed for building to maximize cache hits
-COPY tsconfig.json .
+COPY tsconfig.json rolldown.config.ts .
 COPY src ./src
 
 # Install all dependencies and build the project.
@@ -27,13 +27,13 @@ COPY package*.json ./
 
 # Install NPM packages, skip optional and development dependencies to
 # keep the image small. Avoid logging too much and print the dependency
-RUN npm --quiet set progress=false \
-    && npm ci --omit=dev \
-    && echo "Node.js version:" \
-    && node --version \
-    && echo "NPM version:" \
-    && npm --version \
-    && rm -r ~/.npm
+# RUN npm --quiet set progress=false \
+#     && npm ci --omit=dev \
+#     && echo "Node.js version:" \
+#     && node --version \
+#     && echo "NPM version:" \
+#     && npm --version \
+#     && rm -r ~/.npm
 
 # Copy built JS files from builder image
 COPY --from=builder /usr/src/app/dist ./dist

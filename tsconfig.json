@@ -11,5 +11,5 @@
         "skipLibCheck": true,
         "lib": ["ESNext"]
     },
-    "include": ["./src/**/*", "./test/**/*"]
+    "include": ["./src/**/*", "./test/**/*", "rolldown.config.ts"]
 }
