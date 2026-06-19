@@ -11,6 +11,8 @@ export default defineConfig({
         codeSplitting: false,
         sourcemap: 'inline',
         strict: true,
+        comments: false,
+        minifyInternalExports: true,
         // minify: true,
     },
 });

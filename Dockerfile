@@ -19,7 +19,8 @@ COPY src ./src
 RUN npm run build
 
 # Create final image
-FROM apify/actor-node:24
+FROM node:24-alpine
+ENV NODE_ENV=production
 
 # Copy just package.json and package-lock.json
 # to speed up the build using Docker layer cache.
