@@ -15,6 +15,7 @@
         "apify-test-tools": "^0.8.0",
         "husky": "^9.1.7",
         "knip": "^6.17.1",
+        "lefthook": "^2.1.9",
         "lint-staged": "^17.0.7",
         "oxfmt": "^0.55.0",
         "oxlint": "^1.70.0",
@@ -28,12 +29,14 @@
         "start:prod": "node dist/main.js",
         "start:dev": "tsx src/main.ts",
         "build": "tsc",
+        "build-check": "tsc --noEmit",
         "lint": "oxlint --type-aware",
         "lint:fix": "oxlint --type-aware --fix",
         "format": "oxfmt --write .",
         "format:check": "oxfmt --check .",
         "test": "vitest run --coverage",
-        "prepare": "husky .husky || true",
+        "prepare": "lefthook install",
+        "reset-hooks": "lefthook install --reset-hooks-path",
         "check-unused": "knip --include exports,types"
     },
     "lint-staged": {

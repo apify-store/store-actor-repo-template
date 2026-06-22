@@ -1,0 +1,36 @@
+#   https://lefthook.dev/configuration/
+# Runs in ~1s at the time of writing
+
+# `**` globs match 0 or more in depth
+glob_matcher: doublestar
+
+# Forbid pushing to master (this should be set in repo settings though)
+pre-push:
+    only:
+        - ref: master
+    commands:
+        protect-master:
+            run: exit 1
+
+pre-commit:
+    parallel: true
+    jobs:
+        - name: Linter
+          run: npm run lint {staged_files}
+          glob: '**/*.{js,ts}'
+
+        - name: Formatter
+          run: npm run format:check {staged_files}
+          glob: '**/*.{js,ts,json}'
+
+        - name: Unit Test
+          run: npm run test unit
+          glob: '**/*.{js,ts,json}'
+
+        - name: Type Check
+          run: npm run build-check
+          glob: '**/*.{js,ts}'
+
+        - name: Unused Exports
+          run: npm run check-unused
+          glob: '**/*.{js,ts,json}'
