@@ -10,19 +10,18 @@
         "apify": "^3.7.2"
     },
     "devDependencies": {
-        "@apify/eslint-config": "^2.0.6",
+        "@apify/oxlint-config": "^0.2.10",
         "@apify/tsconfig": "^0.1.2",
         "@vitest/coverage-v8": "^4.1.8",
         "apify-test-tools": "^0.8.0",
-        "eslint": "^9.39.4",
-        "eslint-config-prettier": "^10.1.8",
         "husky": "^9.1.7",
-        "knip": "^6.16.1",
+        "knip": "^6.17.1",
         "lint-staged": "^17.0.7",
+        "oxlint": "^1.70.0",
+        "oxlint-tsgolint": "^0.23.0",
         "prettier": "^3.8.4",
         "tsx": "^4.22.4",
         "typescript": "^6.0.3",
-        "typescript-eslint": "^8.61.0",
         "vitest": "^4.1.8"
     },
     "scripts": {
@@ -30,8 +29,8 @@
         "start:prod": "node dist/main.js",
         "start:dev": "tsx src/main.ts",
         "build": "tsc",
-        "lint": "eslint",
-        "lint:fix": "eslint --fix",
+        "lint": "oxlint --type-aware",
+        "lint:fix": "oxlint --type-aware --fix",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "test": "vitest run --coverage",
@@ -39,8 +38,7 @@
         "check-unused": "knip --include exports,types"
     },
     "lint-staged": {
-        "*.ts": "eslint",
-        "*.tsx": "eslint"
+        "*.{ts,tsx}": "oxlint"
     },
     "author": "It's not you it's me",
     "license": "ISC"
