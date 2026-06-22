@@ -5,19 +5,6 @@
     "license": "ISC",
     "author": "It's not you it's me",
     "type": "module",
-    "scripts": {
-        "start": "npm run start:dev",
-        "start:prod": "node dist/main.js",
-        "start:dev": "tsx src/main.ts",
-        "build": "tsc",
-        "lint": "oxlint --type-aware",
-        "lint:fix": "oxlint --type-aware --fix",
-        "format": "prettier --write .",
-        "format:check": "prettier --check .",
-        "test": "vitest run --coverage",
-        "prepare": "husky .husky || true",
-        "check-unused": "knip --include exports,types"
-    },
     "dependencies": {
         "apify": "^3.7.2"
     },
@@ -29,6 +16,7 @@
         "husky": "^9.1.7",
         "knip": "^6.17.1",
         "lint-staged": "^17.0.7",
+        "oxfmt": "^0.55.0",
         "oxlint": "^1.70.0",
         "oxlint-tsgolint": "^0.23.0",
         "prettier": "^3.8.4",
@@ -36,8 +24,23 @@
         "typescript": "^6.0.3",
         "vitest": "^4.1.8"
     },
+    "scripts": {
+        "start": "npm run start:dev",
+        "start:prod": "node dist/main.js",
+        "start:dev": "tsx src/main.ts",
+        "build": "tsc",
+        "lint": "oxlint --type-aware",
+        "lint:fix": "oxlint --type-aware --fix",
+        "format": "oxfmt --write .",
+        "format:check": "oxfmt --check .",
+        "test": "vitest run --coverage",
+        "prepare": "husky .husky || true",
+        "check-unused": "knip --include exports,types"
+    },
     "lint-staged": {
-        "*.{ts,tsx}": "oxlint"
+        "*.ts": "oxlint",
+        "*.tsx": "oxlint",
+        "*.{ts,tsx,js,json,md}": "oxfmt --write"
     },
     "engines": {
         "node": ">=24.0.0"
