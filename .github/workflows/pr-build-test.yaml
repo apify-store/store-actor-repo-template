@@ -4,5 +4,5 @@ on:
 
 jobs:
     buildDevelAndTest:
-        uses: apify-store/github-actions-source/.github/workflows/pr-build-test.yaml@master
+        uses: apify-store/github-actions-source/.github/workflows/pr-build-test.yaml@formatter-by-repo
         secrets: inherit
