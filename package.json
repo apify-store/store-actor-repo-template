@@ -37,8 +37,8 @@
         "check-unused": "knip --include exports,types"
     },
     "lint-staged": {
-        "*.ts": "oxlint",
-        "*.tsx": "oxlint",
+        "*.ts": "oxlint --type-aware",
+        "*.tsx": "oxlint --type-aware",
         "*.{ts,tsx,js,json,md}": "oxfmt --write"
     },
     "engines": {
