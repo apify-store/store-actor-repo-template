@@ -34,3 +34,17 @@ pre-commit:
         - name: Unused Exports
           run: npm run check-unused
           glob: '**/*.{js,ts,json}'
+
+        - name: Validate Input Schemas
+          run: |
+              CHANGED_ACTORS=$(printf '%s\n' {staged_files} \
+                | grep -E '^actors/[^/]+/\.actor/.*\.json$' \
+                | cut -d/ -f1,2 | sort -u)
+
+              CHANGED_COUNT=$(printf '%s\n' "$CHANGED_ACTORS" | wc -l)
+              echo "Found $CHANGED_COUNT changed actors: "
+              printf '%s\n' "$CHANGED_ACTORS"
+
+              printf '%s\n' "$CHANGED_ACTORS" \
+                | xargs -P "$CHANGED_COUNT" -I {} sh -c 'cd {} && apify validate-schema || exit 255'
+          glob: actors/*/.actor/*.json
