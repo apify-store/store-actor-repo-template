@@ -35,7 +35,7 @@
         "format": "oxfmt --write .",
         "format:check": "oxfmt --check .",
         "test": "vitest run --coverage",
-        "prepare": "lefthook install",
+        "prepare": "lefthook install || true",
         "reset-hooks": "lefthook install --reset-hooks-path",
         "check-unused": "knip --include exports,types"
     },
