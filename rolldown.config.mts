@@ -1,10 +1,14 @@
 import { defineConfig } from 'rolldown';
 
+// oxlint-disable-next-line import/no-default-export
 export default defineConfig({
     input: 'src/main.ts',
     treeshake: true,
     platform: 'node',
     tsconfig: './tsconfig.json',
+    moduleTypes: {
+        '.node': 'asset',
+    },
     output: {
         dir: 'dist',
         codeSplitting: true,
