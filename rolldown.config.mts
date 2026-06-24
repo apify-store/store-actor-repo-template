@@ -10,6 +10,7 @@ export default defineConfig({
         '.node': 'binary',
     },
     output: {
+        format: 'esm',
         file: 'dist/main.js',
         codeSplitting: false,
         sourcemap: 'inline',
