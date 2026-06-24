@@ -7,7 +7,7 @@ export default defineConfig({
     platform: 'node',
     tsconfig: './tsconfig.json',
     moduleTypes: {
-        '.node': 'asset',
+        '.node': 'binary',
     },
     output: {
         dir: 'dist',
