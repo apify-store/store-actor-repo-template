@@ -10,8 +10,8 @@ export default defineConfig({
         '.node': 'binary',
     },
     output: {
-        dir: 'dist',
-        codeSplitting: true,
+        file: 'dist/main.js',
+        codeSplitting: false,
         sourcemap: 'inline',
         strict: true,
         comments: false,
