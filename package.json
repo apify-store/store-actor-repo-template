@@ -6,7 +6,9 @@
     "author": "It's not you it's me",
     "type": "module",
     "dependencies": {
-        "apify": "^3.7.2"
+        "@crawlee/impit-client": "^3.17.0",
+        "apify": "^3.7.2",
+        "crawlee": "^3.17.0"
     },
     "devDependencies": {
         "@apify/oxlint-config": "^0.2.10",
