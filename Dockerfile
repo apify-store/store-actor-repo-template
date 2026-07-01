@@ -41,4 +41,4 @@ COPY --from=builder /usr/src/app/dist ./dist
 # Here copy all other files necessary for runtime one by one. Try to keep them minimal to increase cache hits.
 
 # Run the image.
-CMD ["node", "dist/main.js"]
+CMD ["node", "dist/src/main.js"]
