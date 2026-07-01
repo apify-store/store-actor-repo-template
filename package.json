@@ -6,7 +6,10 @@
     "author": "It's not you it's me",
     "type": "module",
     "dependencies": {
-        "apify": "^3.7.2"
+        "@crawlee/cheerio": "^3.17.0",
+        "@crawlee/impit-client": "^3.17.0",
+        "apify": "^3.7.2",
+        "zod": "^4.4.3"
     },
     "devDependencies": {
         "@apify/oxlint-config": "^0.2.10",

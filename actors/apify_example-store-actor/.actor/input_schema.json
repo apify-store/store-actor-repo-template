@@ -1,15 +1,16 @@
 {
     "$schema": "https://apify.com/schemas/v1/input.ide.json",
-    "title": "CheerioCrawler Template",
+    "title": "PokeAPI Scraper",
     "type": "object",
     "schemaVersion": 1,
     "properties": {
-        "dataCount": {
-            "title": "Data Count",
-            "type": "number",
-            "description": "Number of data items to collect.",
-            "editor": "number",
-            "prefill": 5
+        "pokemon": {
+            "title": "Pokémon names or IDs",
+            "type": "array",
+            "description": "List of Pokémon names or National Pokédex IDs to fetch from PokeAPI's /pokemon/{name|id} endpoint.",
+            "editor": "stringList",
+            "prefill": ["pikachu", "ditto", "25"]
         }
-    }
+    },
+    "required": ["pokemon"]
 }

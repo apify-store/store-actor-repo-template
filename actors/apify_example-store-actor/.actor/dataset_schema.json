@@ -6,7 +6,7 @@
         "overview": {
             "title": "Overview",
             "transformation": {
-                "fields": ["id"]
+                "fields": ["id", "name", "height", "weight", "types", "abilities"]
             },
             "display": {
                 "component": "table",
@@ -14,6 +14,26 @@
                     "id": {
                         "label": "ID",
                         "format": "number"
+                    },
+                    "name": {
+                        "label": "Name",
+                        "format": "text"
+                    },
+                    "height": {
+                        "label": "Height",
+                        "format": "number"
+                    },
+                    "weight": {
+                        "label": "Weight",
+                        "format": "number"
+                    },
+                    "types": {
+                        "label": "Types",
+                        "format": "array"
+                    },
+                    "abilities": {
+                        "label": "Abilities",
+                        "format": "array"
                     }
                 }
             }
