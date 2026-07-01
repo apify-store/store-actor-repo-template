@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm ci --include=dev --audit=false
 
 # Copy only files needed for building to maximize cache hits
-COPY tsconfig.json .
+COPY tsconfig*.json .
 COPY src ./src
 
 # Install all dependencies and build the project.
