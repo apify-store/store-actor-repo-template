@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm ci --include=dev --audit=false
 
 # Copy only files needed for building to maximize cache hits
-COPY tsconfig.json .
+COPY tsconfig*.json .
 COPY src ./src
 
 # Install all dependencies and build the project.
@@ -41,4 +41,4 @@ COPY --from=builder /usr/src/app/dist ./dist
 # Here copy all other files necessary for runtime one by one. Try to keep them minimal to increase cache hits.
 
 # Run the image.
-CMD ["node", "dist/main.js"]
+CMD ["node", "dist/src/main.js"]

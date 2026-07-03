@@ -28,7 +28,7 @@
         "start": "npm run start:dev",
         "start:prod": "node dist/main.js",
         "start:dev": "tsx src/main.ts",
-        "build": "tsc",
+        "build": "tsc --project tsconfig.prod.json",
         "build-check": "tsc --noEmit",
         "lint": "oxlint --type-aware",
         "lint:fix": "oxlint --type-aware --fix",
