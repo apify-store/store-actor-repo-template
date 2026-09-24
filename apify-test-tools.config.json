@@ -1,0 +1,9 @@
+{
+    "actors": [
+        {
+            "folder": "actors/example-store-actor",
+            "actorFullName": "apify/example-store-actor",
+            "tokenEnvVar": "APIFY_TOKEN_APIFY"
+        }
+    ]
+}
