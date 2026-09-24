@@ -20,7 +20,7 @@ pre-commit:
           glob: '**/*.{js,ts}'
 
         - name: Formatter
-          run: npm run format:check {staged_files}
+          run: npx oxfmt --check --no-error-on-unmatched-pattern {staged_files}
           glob: '**/*.{js,ts,json}'
 
         - name: Unit Test

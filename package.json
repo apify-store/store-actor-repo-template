@@ -16,7 +16,6 @@
         "husky": "^9.1.7",
         "knip": "^6.17.1",
         "lefthook": "^2.1.9",
-        "lint-staged": "^17.0.7",
         "oxfmt": "^0.55.0",
         "oxlint": "^1.70.0",
         "oxlint-tsgolint": "^0.23.0",
@@ -38,11 +37,6 @@
         "prepare": "lefthook install || true",
         "reset-hooks": "lefthook install --reset-hooks-path",
         "check-unused": "knip --include exports,types"
-    },
-    "lint-staged": {
-        "*.ts": "oxlint --type-aware",
-        "*.tsx": "oxlint --type-aware",
-        "*.{ts,tsx,js,json,md}": "oxfmt --write"
     },
     "engines": {
         "node": ">=24.0.0"
