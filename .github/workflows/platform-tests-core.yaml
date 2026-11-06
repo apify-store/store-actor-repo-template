@@ -11,4 +11,5 @@ jobs:
         uses: apify/apify-test-tools/.github/workflows/public_platform-tests.yaml@master
         with:
             subtest: core
+            # report-slack-channel: '#notif-<repo-name>'
         secrets: inherit

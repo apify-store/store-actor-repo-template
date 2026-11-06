@@ -7,4 +7,6 @@ on:
 jobs:
     buildLatest:
         uses: apify/apify-test-tools/.github/workflows/public_push-build-latest.yaml@master
+        # with:
+        #     report-slack-channel: '#notif-<repo-name>'
         secrets: inherit
