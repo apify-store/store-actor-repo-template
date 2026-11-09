@@ -10,6 +10,6 @@ jobs:
     platformTestsCore:
         uses: apify/apify-test-tools/.github/workflows/public_platform-tests.yaml@master
         with:
-            subtest: core
+            test-files-glob: 'test/platform/core/**'
             # report-slack-channel: '#notif-<repo-name>'
         secrets: inherit
