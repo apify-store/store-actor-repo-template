@@ -1,0 +1,29 @@
+# git and CI
+.git
+.github
+.husky
+lefthook.yml
+
+# editor and agent files
+.vscode
+.idea
+.zed
+.claude
+AGENTS.md
+CLAUDE.md
+memory
+
+# tests
+test
+vitest.config.ts
+
+# installed dependencies
+node_modules
+
+# build output, the Docker build creates it
+dist
+
+# local Apify and Crawlee storage
+storage
+apify_storage
+crawlee_storage
