@@ -1,0 +1,18 @@
+# git and CI
+.git
+.github
+lefthook.yml
+
+# editor and agent files
+memory
+
+# tests
+test
+
+# installed dependencies
+node_modules
+
+# local Apify and Crawlee storage
+storage
+apify_storage
+crawlee_storage
